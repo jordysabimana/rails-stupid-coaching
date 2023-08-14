@@ -1,5 +1,13 @@
 require "test_helper"
 
-class ApplicationSystemTestCase < ActionDispatch::SystemTestCase
-  driven_by :selenium, using: :chrome, screen_size: [1400, 1400]
+class QuestionsTest < ApplicationSystemTestCase
+  # [...]
+
+  test "saying Hello yields a grumpy response from the coach" do
+    visit ask_url
+    fill_in "question", with: "Hello"
+    click_on "Ask"
+
+    assert_text "I don't care, get dressed and go to work!"
+  end
 end
